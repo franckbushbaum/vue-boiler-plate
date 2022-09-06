@@ -1,6 +1,6 @@
 <template>
     <div>
-    <form @submit="handleSubmit">
+    <form @submit.prevent="handleSubmit">
 
         <label>Email:</label>
         <input type="email" required v-model="email">
@@ -49,6 +49,7 @@ export default {
             terms: false,
             temporarySkill: '',
             skills: [],
+            passwordError: '',
         }
     },
     methods: {
@@ -70,7 +71,9 @@ export default {
             })
         },
         handleSubmit(){
-            console.log('form submitted')
+            // if length greater than 5 be an empty string, else throw error.
+            this.passwordError = this.password.length > 5 ? '' :
+
         },
     }
 }
